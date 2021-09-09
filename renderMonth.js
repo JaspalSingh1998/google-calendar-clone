@@ -4,13 +4,18 @@ import {
   endOfMonth,
   endOfWeek,
   eachDayOfInterval,
+  isSameMonth,
 } from "date-fns";
 import createDayElement from "./createDayElement";
 
 const daysContainer = document.querySelector("[data-calendar-days]");
 
 export default function renderMonth(monthDate) {
-  const dayElements = getCalendarDates(monthDate).map(createDayElement);
+  const dayElements = getCalendarDates(monthDate).map((date, index) => {
+    return createDayElement(date, {
+      isCurrentMonth: isSameMonth(monthDate, date),
+    });
+  });
   daysContainer.innerHTML = "";
   dayElements.forEach((element) => daysContainer.append(element));
 }
