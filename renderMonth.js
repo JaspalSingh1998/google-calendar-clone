@@ -5,9 +5,14 @@ import {
   endOfWeek,
   eachDayOfInterval,
 } from "date-fns";
+import createDayElement from "./createDayElement";
+
+const daysContainer = document.querySelector("[data-calendar-days]");
 
 export default function renderMonth(monthDate) {
-  const dates = getCalendarDates(monthDate);
+  const dayElements = getCalendarDates(monthDate).map(createDayElement);
+  daysContainer.innerHTML = "";
+  dayElements.forEach((element) => daysContainer.append(element));
 }
 
 function getCalendarDates(date) {

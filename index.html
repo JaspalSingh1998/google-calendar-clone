@@ -17,7 +17,7 @@
         </div>
         <span class="month-title">April 2021</span>
       </div>
-      <div class="days">
+      <div class="days" data-calendar-days>
         <div class="day non-month-day">
           <div class="day-header">
             <div class="week-name">Mon</div>
@@ -404,10 +404,11 @@
       </form>
     </template>
     <template id="day-template">
-      <div class="day">
+      <div class="day" data-day-wrapper>
         <div class="day-header">
-          <div class="day-number">9</div>
-          <button class="add-event-btn">+</button>
+          <div class="week-name" data-week-name></div>
+          <div class="day-number" data-day-number></div>
+          <button class="add-event-btn" data-add-event-btn>+</button>
         </div>
         <div class="events">
           <button class="all-day-event green event">
@@ -434,7 +435,7 @@
             <div class="event-name">Event Name</div>
           </button>
         </div>
-        <button class="events-view-more-btn">+2 More</button>
+        <button class="events-view-more-btn"></button>
       </div>
     </template>
     <script src="./script.js" type="module"></script>
