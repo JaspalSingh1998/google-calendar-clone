@@ -5,6 +5,7 @@ import {
   endOfWeek,
   eachDayOfInterval,
   isSameMonth,
+  isSameDay,
 } from "date-fns";
 import createDayElement from "./createDayElement";
 
@@ -14,6 +15,8 @@ export default function renderMonth(monthDate) {
   const dayElements = getCalendarDates(monthDate).map((date, index) => {
     return createDayElement(date, {
       isCurrentMonth: isSameMonth(monthDate, date),
+      isCurrentDay: isSameDay(Date.now(), date),
+      showWeekName: index < 7,
     });
   });
   daysContainer.innerHTML = "";
