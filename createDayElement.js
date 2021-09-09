@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { addEvent } from "./events";
 import { openAddEventModal } from "./modal";
 
 const dayTemplate = document.getElementById("day-template");
@@ -26,7 +27,9 @@ export default function createDayElement(date, options = {}) {
   dayElement
     .querySelector("[data-add-event-btn]")
     .addEventListener("click", () => {
-      openAddEventModal(date);
+      openAddEventModal(date, (event) => {
+        addEvent(event);
+      });
     });
 
   const dayNumberElement = dayElement.querySelector("[data-day-number]");
