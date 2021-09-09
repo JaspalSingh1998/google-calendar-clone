@@ -4,6 +4,14 @@ import { v4 as uuidV4 } from "uuid";
 const modal = document.querySelector("[data-modal]");
 const modalBody = document.querySelector("[data-modal-body]");
 
+const overlay = document.querySelector("[data-overlay]");
+
+overlay.addEventListener("click", closeModal);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") closeModal();
+});
+
 const eventModalTemplate = document.getElementById("event-form-template");
 
 export function openAddEventModal(date) {
