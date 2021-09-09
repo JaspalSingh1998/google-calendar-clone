@@ -18,4 +18,9 @@ document
     renderMonth(selectedMonth);
   });
 
+document.querySelector("[data-today-btn]").addEventListener("click", (e) => {
+  selectedMonth = Date.now();
+  renderMonth(selectedMonth);
+});
+
 renderMonth(selectedMonth);
