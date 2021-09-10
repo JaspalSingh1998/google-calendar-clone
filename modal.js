@@ -15,13 +15,11 @@ document.addEventListener("keydown", (e) => {
 const eventModalTemplate = document.getElementById("event-form-template");
 
 export function openAddEventModal(date, saveCallback) {
-  const formModalBody = eventModalTemplate.content.cloneNode(true);
   openModal(getEventFormModalBody({ date }, saveCallback));
 }
 
-export function openEditEventModal(event) {
-  const formModalBody = eventModalTemplate.content.cloneNode(true);
-  openModal(getEventFormModalBody(event));
+export function openEditEventModal(event, saveCallback, deleteCallback) {
+  openModal(getEventFormModalBody(event, saveCallback, deleteCallback));
 }
 
 function getEventFormModalBody(event, saveCallback, deleteCallback) {

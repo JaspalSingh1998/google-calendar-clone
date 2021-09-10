@@ -1,4 +1,5 @@
 import { isSameDay } from "date-fns";
+import renderMonth from "./renderMonth";
 
 const EVENTS_KEY = "CALENDAR.events";
 
@@ -6,6 +7,18 @@ let events = JSON.parse(localStorage.getItem(EVENTS_KEY)) || [];
 
 export function addEvent(event) {
   events.push(event);
+  save();
+}
+
+export function updateEvent(event) {
+  events = events.map((e) => {
+    if (e.id == event.id) return event;
+    return e;
+  });
+  save();
+}
+export function removeEvent(event) {
+  events = events.filter((e) => e.id !== event.id);
   save();
 }
 
