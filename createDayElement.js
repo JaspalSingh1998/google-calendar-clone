@@ -1,6 +1,8 @@
 import { format } from "date-fns";
-import { addEvent } from "./events";
+import createEventElement from "./createEventElement";
+import { addEvent, getEventsForDay } from "./events";
 import { openAddEventModal } from "./modal";
+import renderMonth from "./renderMonth";
 
 const dayTemplate = document.getElementById("day-template");
 export default function createDayElement(date, options = {}) {
@@ -29,6 +31,7 @@ export default function createDayElement(date, options = {}) {
     .addEventListener("click", () => {
       openAddEventModal(date, (event) => {
         addEvent(event);
+        renderMonth(date);
       });
     });
 
@@ -38,6 +41,12 @@ export default function createDayElement(date, options = {}) {
   if (isCurrentDay) {
     dayNumberElement.classList.add("active");
   }
+
+  const eventContainer = dayElement.querySelector("[data-event-container]");
+  eventContainer.innerHTML = "";
+  getEventsForDay(date).forEach((event) => {
+    eventContainer.append(createEventElement(event));
+  });
 
   return dayElement;
 }

@@ -415,7 +415,7 @@
           <div class="day-number" data-day-number></div>
           <button class="add-event-btn" data-add-event-btn>+</button>
         </div>
-        <div class="events">
+        <div class="events" data-event-container>
           <button class="all-day-event green event">
             <div class="event-name">Short</div>
           </button>
@@ -442,6 +442,11 @@
         </div>
         <button class="events-view-more-btn"></button>
       </div>
+    </template>
+    <template id="all-day-event-template">
+      <button class="all-day-event event" data-event>
+        <div class="event-name" data-name></div>
+      </button>
     </template>
     <script src="./script.js" type="module"></script>
   </body>
